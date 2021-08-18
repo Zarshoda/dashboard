@@ -27,9 +27,16 @@ const Home = () => {
                         </div>
                     </Link>
                 </div>
+                <div className="col-md-6">
+                    <Link to="/dashboard/posts">
+                        <div className="cardd">
+                            Posts
+                        </div>
+                    </Link>
+                </div>
             </div>
         </HomeWrapper>
     )
 }
 
-export default Home
+export default Home;

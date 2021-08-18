@@ -6,6 +6,9 @@ th,td{
     border: burlywood solid 1px;
     border-collapse: collapse;
 }
+table{
+    width: 100%;
+}
 `;
 
 export default UsersWrapper;

@@ -1,36 +1,38 @@
 import { LinearProgress } from '@material-ui/core';
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React from 'react'
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux'
 import Error from '../../components/Error';
-import { setTodos } from '../../redux/actions';
-import TodosWrapper from './TodosWrapper'
+import { setPosts } from '../../redux/actions';
+import PostsWrapper from './PostsWrapper'
 
-const Todos = () => {
-    const todos = useSelector(state => state.todos);
+const Posts = () => {
+    const posts = useSelector(state => state.posts);
     const isLoading = useSelector(state => state.isLoading);
     const isError = useSelector(state => state.isError);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
-        setTodos(dispatch);
+        setPosts(dispatch);
     }, [])
     return (
-        <TodosWrapper>
+        <PostsWrapper>
             {isLoading && <LinearProgress color="secondary" /> ||
                 isError && <Error /> ||
-                todos.length > 0 &&
+                posts.length > 0 &&
                 <div className="row">
-                    {todos.map(v =>
-                        <div className="col-md-6">
+                    {posts.map(v =>
+                        <div className="col-lg-4 col-md-6">
                             <div className="cardd">
-                                {v.title}
+                                <h1>{v.title}</h1>
+                                <p>{v.body}</p>
                             </div>
                         </div>
                     )}
                 </div> || "no data"}
-        </TodosWrapper>
+        </PostsWrapper>
     )
 }
 
-export default Todos;
+export default Posts;
